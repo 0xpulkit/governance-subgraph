@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0xCaf0aa768A3AE1297DF20072419Db8Bb8b5C8cEf"
       abi: Timelock
+      startBlock: 13106903
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5

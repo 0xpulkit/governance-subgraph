@@ -21,7 +21,7 @@ export function handleCallExecuted(event: CallExecutedEvent): void {
   let entity = new CallExecuted(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
-  entity.id = event.params.id
+  entity.proposalid = event.params.id
   entity.index = event.params.index
   entity.target = event.params.target
   entity.value = event.params.value
@@ -33,7 +33,7 @@ export function handleCallScheduled(event: CallScheduledEvent): void {
   let entity = new CallScheduled(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
-  entity.id = event.params.id
+  entity.proposalid = event.params.id
   entity.index = event.params.index
   entity.target = event.params.target
   entity.value = event.params.value
@@ -47,7 +47,7 @@ export function handleCancelled(event: CancelledEvent): void {
   let entity = new Cancelled(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   )
-  entity.id = event.params.id
+  entity.proposalid = event.params.id
   entity.save()
 }
 
