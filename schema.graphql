@@ -1,0 +1,51 @@
+type CallExecuted @entity {
+  id: ID!
+  id: Bytes! # bytes32
+  index: BigInt! # uint256
+  target: Bytes! # address
+  value: BigInt! # uint256
+  data: Bytes! # bytes
+}
+
+type CallScheduled @entity {
+  id: ID!
+  id: Bytes! # bytes32
+  index: BigInt! # uint256
+  target: Bytes! # address
+  value: BigInt! # uint256
+  data: Bytes! # bytes
+  predecessor: Bytes! # bytes32
+  delay: BigInt! # uint256
+}
+
+type Cancelled @entity {
+  id: ID!
+  id: Bytes! # bytes32
+}
+
+type MinDelayChange @entity {
+  id: ID!
+  oldDuration: BigInt! # uint256
+  newDuration: BigInt! # uint256
+}
+
+type RoleAdminChanged @entity {
+  id: ID!
+  role: Bytes! # bytes32
+  previousAdminRole: Bytes! # bytes32
+  newAdminRole: Bytes! # bytes32
+}
+
+type RoleGranted @entity {
+  id: ID!
+  role: Bytes! # bytes32
+  account: Bytes! # address
+  sender: Bytes! # address
+}
+
+type RoleRevoked @entity {
+  id: ID!
+  role: Bytes! # bytes32
+  account: Bytes! # address
+  sender: Bytes! # address
+}

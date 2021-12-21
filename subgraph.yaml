@@ -1,0 +1,41 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Timelock
+    network: mainnet
+    source:
+      address: "0xCaf0aa768A3AE1297DF20072419Db8Bb8b5C8cEf"
+      abi: Timelock
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - CallExecuted
+        - CallScheduled
+        - Cancelled
+        - MinDelayChange
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+      abis:
+        - name: Timelock
+          file: ./abis/Timelock.json
+      eventHandlers:
+        - event: CallExecuted(indexed bytes32,indexed uint256,address,uint256,bytes)
+          handler: handleCallExecuted
+        - event: CallScheduled(indexed bytes32,indexed uint256,address,uint256,bytes,bytes32,uint256)
+          handler: handleCallScheduled
+        - event: Cancelled(indexed bytes32)
+          handler: handleCancelled
+        - event: MinDelayChange(uint256,uint256)
+          handler: handleMinDelayChange
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ./src/mapping.ts
